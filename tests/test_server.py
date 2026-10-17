@@ -270,7 +270,8 @@ class TestStructuredSearch:
             await structured_search(author="Euler")
 
         params = mock_client.get.call_args[1]["params"]
-        assert params["Contributor name"] == "Euler"
+        assert params["Author name"] == "Euler"
+        assert "Contributor name" not in params
 
     @pytest.mark.asyncio
     async def test_sends_msc_param(self):
@@ -339,7 +340,7 @@ class TestStructuredSearch:
             await structured_search()
 
         params = mock_client.get.call_args[1]["params"]
-        for key in ("Contributor name", "Title", "MSC", "Source", "Year"):
+        for key in ("Author name", "Contributor name", "Title", "MSC", "Source", "Year"):
             assert key not in params
 
 

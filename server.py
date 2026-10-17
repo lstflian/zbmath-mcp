@@ -6,11 +6,11 @@ import json
 from typing import Any
 
 import httpx
-from mcp.server.fastmcp import FastMCP
+from mcp.server.mcpserver import MCPServer
 
 ZBMATH_API_BASE = "https://api.zbmath.org/v1"
 
-mcp = FastMCP(
+mcp = MCPServer(
     "zbmath",
     instructions=(
         "Tools for searching and retrieving mathematical literature from "

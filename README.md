@@ -7,7 +7,7 @@ This server exposes the [zbMath Open REST API](https://api.zbmath.org/v1/) as [M
 ## Tools
 
 | Tool | Description |
-|------|-------------|
+| ------ | ------------- |
 | `search_documents` | Free-text search across 4.5 M+ zbMath documents |
 | `get_document` | Fetch full metadata for a document by its zbMath ID |
 | `structured_search` | Field-filtered search (author, title, MSC code, year range, journal) |
@@ -18,6 +18,10 @@ This server exposes the [zbMath Open REST API](https://api.zbmath.org/v1/) as [M
 
 - Python 3.11+
 - [`uv`](https://docs.astral.sh/uv/) (recommended) or `pip`
+
+This server uses the MCP SDK 2.x `MCPServer` API (2.3.0 or newer).
+MCP SDK 1.x is not supported. Client connections still use standard MCP over
+stdio; existing client configurations do not need to change.
 
 ## Installation
 
@@ -44,6 +48,18 @@ uv sync
 ```
 
 (With plain `pip` instead of `uv`, run `pip install -e .` in place of `uv sync`.)
+
+To install the current local source as an isolated tool, run this from the
+source directory:
+
+```bash
+uv tool install .
+```
+
+If `zbmath-mcp` is already installed, use `uv tool install --reinstall .` to
+replace it with the local version and refresh its dependencies. Tool installation
+resolves dependencies from `pyproject.toml`; it does not use the project's
+`uv.lock`.
 
 ## Usage
 
