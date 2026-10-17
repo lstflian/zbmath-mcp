@@ -195,7 +195,7 @@ async def structured_search(
         "results_per_page": results_per_page,
     }
     if author:
-        params["Contributor name"] = author
+        params["Author name"] = author
     if title:
         params["Title"] = title
     if msc_code:
